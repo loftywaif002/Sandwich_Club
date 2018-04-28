@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.udacity.sandwichclub.model.Sandwich;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,7 +21,9 @@ public class JsonUtils {
     *
     * */
     public static Sandwich parseSandwichJson(String json){
-
+        
+        List<String> ingredients = new ArrayList<>();
+        List<String> alsoKnownAs = new ArrayList<>();
         try{
             JSONObject sandwich_details = new JSONObject(json);
             JSONObject name = sandwich_details.getJSONObject("name");
@@ -29,20 +32,44 @@ public class JsonUtils {
             * If we use getString, it will throw an exception if the value is empty
             * */
             String mainName = name.optString("mainName");
-            String alsoKnownAs = name.optString("alsoKnownAs"); //This is an Array
+
+            JSONArray also_known_as_items = name.getJSONArray("alsoKnownAs");
+            if(also_known_as_items != null){
+
+                for (int i=0; i<also_known_as_items.length();i++){
+                    try {
+                        alsoKnownAs.add(also_known_as_items.getString(i)); //pushing each elements in the array
+                    } catch (JSONException e) {
+                        Log.e(TAG, e.toString());
+                    }
+                }
+            }
+
+            JSONArray ingredient_items = sandwich_details.getJSONArray("ingredients");
+            if(ingredient_items != null){
+
+                for (int i=0; i<ingredient_items.length();i++){
+                    try {
+                        ingredients.add(ingredient_items.getString(i)); //pushing each elements in the array
+                    } catch (JSONException e) {
+                        Log.e(TAG, e.toString());
+                    }
+                }
+            }
 
             String placeOfOrigin = sandwich_details.optString("placeOfOrigin");
 
             String description = sandwich_details.optString("description");
             String image_url = sandwich_details.optString("image");
-            String ingredients = sandwich_details.optString("ingredients"); //This is an array
+
 
             Log.i(TAG,mainName);
-            Log.i(TAG,alsoKnownAs);
+            Log.i(TAG,alsoKnownAs.toString());
             Log.i(TAG,placeOfOrigin);
             Log.i(TAG,description);
             Log.i(TAG,image_url);
-            Log.i(TAG,ingredients);
+            Log.i(TAG,ingredients.toString());
+
         }catch (JSONException e){
             Log.e(TAG, e.toString());
         }
