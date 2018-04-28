@@ -1,26 +1,25 @@
-# Sandwich Club Project Starter Code
+# Sandwich Club Project (Android Nano Degree)
+![screen shot](https://github.com/loftywaif002/Sandwich_Club/blob/master/screen-shot.PNG "scren shot")
+* Common Project Requirements and Specifications.
+ * App is written solely in the Java Programming Language.
+ * Handled rotation properly using onSaveInstanceState/onRestoreInstanceState). 
+ * App utilizes stable release versions of all libraries, Gradle, and Android Studio.
 
 ## Project Overview
-In this project, you will complete the **Sandwich Club** app to
-show the details of each sandwich once it is selected.
+**Sandwich Club** app is all about Sanwiches in different cultures.
+It shows the details of each sandwich once it is selected in the list.
 
-## Why this Project
+## This Project is an extention of the given [Starter Code](https://github.com/udacity/sandwich-club-starter-code)
 
-Building a layout and populating its fields from data received as JSON
-is a common task for Android Developers. Although JSON parsing is usually
-done using libraries, writing the JSON parsing for  this project will
-help you to better understand how it is processed.
+## Implementation
+# Mockup
 
-## What Will I Learn?
-Through this project, you will:
-- Learn how to submit projects for review
-- Practice JSON parsing to a model object
-- Design an activity layout
-- Populate all fields in the layout accordingly
+![prototype](https://github.com/loftywaif002/Sandwich_Club/blob/master/layout-prototype.png "prototype")
 
-## How Do I Complete this Project?
-Download the [Sandwich Club app starter code.](https://github.com/udacity/sandwich-club-starter-code)
+* Layout for Details Activity is implemented using [Linear Layout](https://developer.android.com/reference/android/widget/LinearLayout),
+[Relative Layout](https://developer.android.com/guide/topics/ui/layout/relative), with [Scroll View](https://developer.android.com/reference/android/widget/ScrollView) and [Constraint Layout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout).
 
-Design the layout for the detail activity so the different elements
-display in a sensible way. Implement the JSON parsing in JsonUtils so it
-produces a Sandwich Object that can be used to populate the UI that you designed.
+* JSON data is parsed from the given [https://github.com/loftywaif002/Sandwich_Club/blob/master/app/src/main/res/values/strings.xml] file.
+
+* Note:
+ * In the [Starter Code](https://github.com/udacity/sandwich-club-starter-code), the image link given for the [Swarma](https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Shawarmafood.jpg/800px-Shawarmafood.jpg) inside the [strings.xml](https://github.com/udacity/sandwich-club-starter-code/blob/master/app/src/main/res/values/strings.xml) file is not working. So, it is replaced with a working [image](https://github.com/udacity/sandwich-club-starter-code/blob/master/app/src/main/res/values/strings.xml) link.
