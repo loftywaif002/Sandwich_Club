@@ -40,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
         String json = sandwiches[position];
         Sandwich sandwich = JsonUtils.parseSandwichJson(json);
+        Log.i(TAG,sandwich.toString());
         if (sandwich == null) {
             // Sandwich data unavailable
             closeOnError();
