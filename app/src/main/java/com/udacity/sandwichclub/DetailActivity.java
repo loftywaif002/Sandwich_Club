@@ -19,7 +19,14 @@ public class DetailActivity extends AppCompatActivity {
 
     private static final String TAG = DetailActivity.class.getName();
     private Sandwich sandwich;
-    private TextView also_known_label, also_known_as_textView, place_of_origin_label, place_of_origin_textView, sandwich_description, sandwich_ingredients;
+    private TextView also_known_label,
+            also_known_as_textView,
+            place_of_origin_label,
+            place_of_origin_textView,
+            ingredient_label,
+            ingredient_view,
+            description_label,
+            description_view;
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
@@ -36,6 +43,12 @@ public class DetailActivity extends AppCompatActivity {
 
         place_of_origin_label = findViewById(R.id.place_label_textView);
         place_of_origin_textView = findViewById(R.id.place_of_origin_textView);
+
+        ingredient_label = findViewById(R.id.ingredient_label_view);
+        ingredient_view = findViewById(R.id.ingredient_textview);
+
+        description_label = findViewById(R.id.des_label_view);
+        description_view = findViewById(R.id.description_view);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -81,7 +94,7 @@ public class DetailActivity extends AppCompatActivity {
     * */
     private void populateUI() {
         /*
-        * READING FROM THE LISTS
+        * READING FROM THE LISTS (Also know as List)
         * */
         StringBuilder mStringBuilder = new StringBuilder();
         if (sandwich.getAlsoKnownAs().isEmpty()){
@@ -101,13 +114,44 @@ public class DetailActivity extends AppCompatActivity {
             also_known_as_textView.setText(mStringBuilder);
         }
 
+        /*
+        * Getting place of origin data
+        * */
         if (sandwich.getPlaceOfOrigin().isEmpty()){
-
             place_of_origin_label.setVisibility(View.GONE); //Hide the textview
             place_of_origin_textView.setVisibility(View.GONE);
 
         }else{
             place_of_origin_textView.setText(sandwich.getPlaceOfOrigin());
+        }
+
+        /*
+        * Getting ingredients data
+        * */
+        if (sandwich.getIngredients().isEmpty()){
+            ingredient_label.setVisibility(View.GONE); //Hide the textview
+            ingredient_view.setVisibility(View.GONE);
+
+        }else{
+            String delm = "";
+            for (String str : sandwich.getIngredients())
+            {
+                mStringBuilder.append(delm);
+                delm = ",";
+                mStringBuilder.append(" ");
+                mStringBuilder.append(str);
+            }
+            ingredient_view.setText(mStringBuilder);
+        }
+
+        /*
+        * Getting description data
+        * */
+        if (sandwich.getDescription().isEmpty()){
+            description_label.setVisibility(View.GONE); //Hide the textview
+            description_view.setVisibility(View.GONE);
+        }else{
+            description_view.setText(sandwich.getDescription());
         }
 
 
