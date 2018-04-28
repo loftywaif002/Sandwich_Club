@@ -41,7 +41,6 @@ public class Sandwich {
     public void setAlsoKnownAs(List<String> alsoKnownAs) {
         this.alsoKnownAs = alsoKnownAs;
     }
-
     public String getPlaceOfOrigin() {
         return placeOfOrigin;
     }
