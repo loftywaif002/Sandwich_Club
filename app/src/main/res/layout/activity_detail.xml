@@ -26,16 +26,20 @@
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent">
 
+            <!--adjustViewBounds will maintain the aspect ratio -->
+            <!--fitCenter-> Computing a scale that will maintain the original src aspect ratio, but will also ensure that src fits entirely inside dst -->
             <ImageView
                 android:id="@+id/image_iv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"
                 android:contentDescription="@string/sandwich_picture_content_description"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+            />
 
         </RelativeLayout>
 
